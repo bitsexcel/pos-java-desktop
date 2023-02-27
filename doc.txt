@@ -1,0 +1,13 @@
+VERSION TIENDA V_1
+
+crear c:\\elenroque
+copiar version.txt
+permisos de control total en c:\elenroque
+fijar variable path en c:\...\java\jre\bin
+programa predeterminado para .jar en c:\...\java\jre\bin\javaw
+java: desactivar actualizaciones
+.net framework 4.5 windows 7, 8
+ms visual c++ redistribuible 2010
+mysql: root/daniel
+instalar google chrome
+instalar chrome remote desktop
