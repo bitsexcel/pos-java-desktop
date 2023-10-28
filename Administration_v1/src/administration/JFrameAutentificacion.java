@@ -5,8 +5,11 @@
  */
 package administration;
 
+import datos.FileUser;
 import datos.UsuarioDB;
 import entidad.Usuario;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -22,6 +25,9 @@ public class JFrameAutentificacion extends javax.swing.JFrame {
     UsuarioDB usuariodb;
     JFrameAdministracion jfrm_administracion;
     char[] char_copy;
+    FileUser fileUser;
+    private static Logger logger = Logger.getLogger(JFrameAutentificacion.class.getName());
+
 
     public JFrameAutentificacion() {
 
@@ -30,7 +36,8 @@ public class JFrameAutentificacion extends javax.swing.JFrame {
         str_copy = "";
         bool = false;
         usuario = new Usuario();
-        usuariodb = new UsuarioDB();
+        //usuariodb = new UsuarioDB();
+        
         jfrm_administracion = new JFrameAdministracion();
         jfrm_administracion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -86,9 +93,12 @@ public class JFrameAutentificacion extends javax.swing.JFrame {
         // TODO add your handling code here:
         bool = false;
         jpassf_autentificar.requestFocus();
+        fileUser = new FileUser();
         if (evt.getKeyCode() == evt.VK_ENTER) {
             str_copy = String.copyValueOf(jpassf_autentificar.getPassword());
-            bool = usuariodb.autentificar(str_copy);
+            //bool = usuariodb.autentificar(str_copy);
+            bool = fileUser.readFile(str_copy);
+            logger.info(String.valueOf(bool));
             if (bool) {
                 jfrm_administracion.setVisible(true);
                 this.setVisible(false);
